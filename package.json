@@ -1,0 +1,22 @@
+{
+  "name": "cordova-plugin-mtj",
+  "cordova": {
+    "id": "cordova-plugin-mtj",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YouYII/cordova-plugin-mtj.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "mtj"
+    ],
+  "version": "1.0.0",
+  "description": "",
+  "author": "zy",
+  "license": "ISC"
+}

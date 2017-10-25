@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-mtj" version="1.0.0">
+  <name>MTJ Plugin</name>
+  <js-module name="MTJ Plugin" src="www/common.js">
+    <clobbers target="mtj"/>
+  </js-module>
+  <preference name="MTJ_STAT_ID" />
+  <preference name="MTJ_CHANNEL" default="cordova" />
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="MTJPlugin">
+        <param name="android-package" value="com.cordova.plugin.MTJPlugin"/>
+      </feature>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <!-- 您从百度网站获取的APP KEY -->
+      <meta-data
+        android:name="BaiduMobAd_STAT_ID"
+        android:value="$MTJ_STAT_ID" /> <!-- abcd1234 -->
+      <!-- 渠道商编号 -->
+      <meta-data
+        android:name="BaiduMobAd_CHANNEL"
+        android:value="$MTJ_CHANNEL" />
+
+      <!-- 是否开启错误日志统计，默认为false -->
+      <meta-data
+        android:name="BaiduMobAd_EXCEPTION_LOG"
+        android:value="true" />
+      <!-- 日志发送策略，可选值：APP_START、ONCE_A_DAY、SET_TIME_INTERVAL，默认为APP_START -->
+      <meta-data
+        android:name="BaiduMobAd_SEND_STRATEGY"
+        android:value="APP_START" />
+      <!-- 日志发送策略 为SET_TIME_INTERVAL时，需设定时间间隔(取消下行注释)。取值为1-24的整数，默认为1 -->
+      <!-- <meta-data android:name="BaiduMobAd_TIME_INTERVAL" android:value="2" /> -->
+      <!-- 日志仅在wifi网络下发送，默认为false -->
+      <meta-data
+        android:name="BaiduMobAd_ONLY_WIFI"
+        android:value="false" />
+      <!-- 是否获取基站位置信息 ,默认为true -->
+      <meta-data
+        android:name="BaiduMobAd_CELL_LOCATION"
+        android:value="true" />
+      <!-- 是否获取GPS位置信息，默认为true -->
+      <meta-data
+        android:name="BaiduMobAd_GPS_LOCATION"
+        android:value="true" />
+      <!-- 是否获取WIFI位置信息，默认为true -->
+      <meta-data
+        android:name="BaiduMobAd_WIFI_LOCATION"
+        android:value="true" />
+    </config-file>
+    <config-file parent="/*" target="AndroidManifest.xml">
+      <uses-permission android:name="android.permission.INTERNET" />
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+      <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+      <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+      <uses-permission android:name="android.permission.GET_TASKS" />
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    </config-file>
+    <source-file src="src/android/MTJPlugin.java" target-dir="src/com/cordova/plugin"/>
+    <source-file src="src/android/libs/Baidu_Mtj_3.8.1.1.jar" target-dir="libs" />
+    <framework src="com.android.support:support-v4:23+" />
+  </platform>
+</plugin>
